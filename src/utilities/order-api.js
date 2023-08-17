@@ -4,7 +4,7 @@ import sendRequest from './send-request';
 
   // Retrieve an unpaid order for the logged in user
   export function getCart() {
-    return sendRequest(`${BASE_URL}/cart`);
+   return sendRequest(`${BASE_URL}/cart`)
   }
 
   // Add an item to the cart

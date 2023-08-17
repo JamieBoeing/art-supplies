@@ -1,7 +1,8 @@
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const e = require('cors')
+
+
 
 const checkToken = (req, res) => {
     console.log('req.user', req.user)
@@ -28,6 +29,9 @@ const dataController = {
         try {
             const user = await User.findOne({ email: req.body.email })
             if (!user) throw new Error()
+            const match = await bcrypt.compare(req.body.password, user.password)
+            if (!match) throw new Error()
+            req.user = user
             res.locals.data.user = user
             res.locals.data.token = createJWT(user)
             next()

@@ -8,12 +8,12 @@ const lineItemSchema = new Schema({
 }, {
     timestamps: true,
     toJSON: { virtuals: true }
-})
+});
 
 lineItemSchema.virtual('extPrice').get(function() {
     // 'this' is bound to the lineItem subdoc
     return this.qty * this.item.price;
-})
+});
 
 const orderSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User'},
@@ -22,19 +22,19 @@ const orderSchema = new Schema({
 }, {
     timestamps: true,
     toJSON: { virtuals: true }
-})
+});
 
 orderSchema.virtual('orderTotal').get(function() {
-    return this.lineItems.reduce((total, item) => total + item.extPrice, 0)
-})
+    return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
+});
 
 orderSchema.virtual('totalQty').get(function() {
-    return this.lineItems.reduce((total, item) => total + item.qty, 0)
-})
+    return this.lineItems.reduce((total, item) => total + item.qty, 0);
+});
 
 orderSchema.virtual('orderId').get(function() {
-    return this.id.slice(-6).toUpperCase()
-})
+    return this.id.slice(-6).toUpperCase();
+});
 
 orderSchema.statics.getCart = function(userId) {
     // 'this' is the Order model
@@ -46,36 +46,36 @@ orderSchema.statics.getCart = function(userId) {
         // upsert option will create the doc if
         // it doesn't exist
         { upsert: true, new: true }
-    )
- }
+    );
+ };
 
  orderSchema.methods.addItemToCart = async function(itemId) {
     const cart = this;
     // Check if item is already in cart
     const lineItem = cart.lineItems.find(lineItem => lineItem.item_id.equals(itemId))
     if (lineItem) {
-        lineItem.qty += 1
+        lineItem.qty += 1;
     } else {
-        const item = await mongoose.model('Item').findById(itemId)
-        cart.lineItems.push({ item })
+        const item = await mongoose.model('Item').findById(itemId);
+        cart.lineItems.push({ item });
     }
-    return cart.save()
- }
+    return cart.save();
+ };
 
  // Instance method to set an items' qty in the cart (will add itme if doesnt exsist)
  orderSchema.methods.setItemQty = function(item_id, newQty) {
     // this keyword is bound to the cart (order doc)
-    const cart = this
+    const cart = this;
     // Find the line item in the cart for the new item
     const lineItem = cart.lineItems.find(lineItem => lineItem.item_id.equals(itemId))
     if (lineItem && newQty <= 0) {
         // Calling remove, removes itself from teh cart.lineItems.
-        lineItem.remove()
+        lineItem.deleteOne();
     } else if (lineItem) {
         // Set the new qty - positive value is assured thanks to the prev if
-        lineItem.qty = newQty
+        lineItem.qty = newQty;
     }
-    return cart.save()
+    return cart.save();
  }
 
- module.exports = mongoose.model('Order', orderSchema)
+ module.exports = mongoose.model('Order', orderSchema);

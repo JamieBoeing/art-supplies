@@ -1,53 +1,158 @@
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+:root {
+  --white: #ffffff;
+  --tan-1: #fbf9f6;
+  --tan-2: #e7e2dd;
+  --tan-3: #e2d9d1;
+  --tan-4: #d3c1ae;
+  --orange: #f67f00;
+  --text-light: #968c84;
+  --text-dark: #615954;
+}
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 body {
-  font-size: 16px;
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--tan-4);
+  padding: 2vmin;
+  height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
-.NavBar {
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#app {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  background-color: #f0f0f0;
-  height: 2rem;
+  flex-direction: column;
+}
+
+.align-ctr {
+  text-align: center;
+}
+
+.align-rt {
+  text-align: right;
+}
+
+.smaller {
+  font-size: smaller;
+}
+
+.flex-ctr-ctr {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  color: orangered;
-  a {
-    color: orangered;
-    text-decoration: none;
-    &:link, &:visited {
-      color: orangered;
-      text-decoration: none;
-    }
-  }
 }
 
-.HomePage {
-  h1 {
-    font-size: 3rem;
-  }
-
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 
-.AboutPage {
-  h1 {
-    font-size: 3rem;
-  }
+.flex-j-end {
+  justify-content: flex-end;
 }
 
-.ContactPage{
-  h1 {
-    font-size: 3rem;
-  }
-
+.scroll-y {
+  overflow-y: auto;
 }
 
-.AppPage {
-  h1 {
-    font-size: 3rem;
-  }
+.section-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--tan-1);
+  color: var(--text-dark);
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  padding: 0.6vmin;
+  text-align: center;
+  font-size: 2vmin;
+}
 
+.form-container {
+  padding: 3vmin;
+  background-color: var(--tan-1);
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+}
+
+p.error-message {
+  color: var(--orange);
+  text-align: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1.25vmin;
+  color: var(--text-light);
+  align-items: center;
+}
+
+label {
+  font-size: 2vmin;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 1vmin;
+  font-size: 2vmin;
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 0.5vmin;
+  color: var(--text-dark);
+  background-image: none !important;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: var(--orange);
+}
+
+button,
+a.button {
+  margin: 1vmin;
+  padding: 1vmin;
+  color: var(--white);
+  background-color: var(--orange);
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: 0.1vmin solid var(--tan-2);
+  border-radius: 0.5vmin;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button.btn-sm {
+  font-size: 1.5vmin;
+  padding: 0.6vmin 0.8vmin;
+}
+
+button.btn-sm {
+  font-size: 1vmin;
+  padding: 0.4vmin 0.5vmin;
+}
+
+button:disabled,
+form:invalid button[type="submit"] {
+  cursor: not-allowed;
+  background-color: var(--tan-4);
+}
+
+button[type="submit"] {
+  grid-column: span 2;
+  margin-top: 1vmin;
 }
