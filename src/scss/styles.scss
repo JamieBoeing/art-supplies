@@ -1,37 +1,39 @@
 :root {
   --white: #ffffff;
-  --tan-1: #fbf9f6;
-  --tan-2: #e7e2dd;
-  --tan-3: #e2d9d1;
-  --tan-4: #d3c1ae;
-  --orange: #f67f00;
+  --col-1: #e5edf1;
+  --col-2: #005075;
+  --col-3: #bdaca0;
+  --col-4: #00283a;
+  --col-5: #e7ebf5;
+  --col-6: #244146;
+  --col-7: #abb9bc;
+  --col-8: #6391a5;
+  --teal: #128178;
   --text-light: #968c84;
   --text-dark: #615954;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  background-color: var(--tan-4);
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--col-4);
   padding: 2vmin;
   height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+#root {
+  height: 100%;
 }
 
 .align-ctr {
@@ -44,6 +46,7 @@ code {
 
 .smaller {
   font-size: smaller;
+  color: white;
 }
 
 .flex-ctr-ctr {
@@ -53,7 +56,6 @@ code {
 }
 
 .flex-col {
-  display: flex;
   flex-direction: column;
 }
 
@@ -62,31 +64,31 @@ code {
 }
 
 .scroll-y {
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .section-heading {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: var(--tan-1);
+  background-color: var(--col-1);
   color: var(--text-dark);
-  border: 0.1vmin solid var(--tan-3);
+  border: .2vmin solid var(--col-6);
   border-radius: 1vmin;
-  padding: 0.6vmin;
+  padding: .6vmin;
   text-align: center;
   font-size: 2vmin;
 }
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--tan-1);
-  border: 0.1vmin solid var(--tan-3);
+  background-color: var(--col-7);
+  border: .3vmin solid var(--col-4);
   border-radius: 1vmin;
 }
 
 p.error-message {
-  color: var(--orange);
+  color: var(--teal);
   text-align: center;
 }
 
@@ -94,8 +96,7 @@ form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
-  color: var(--text-light);
-  align-items: center;
+  color: var(--col-7);
 }
 
 label {
@@ -107,52 +108,48 @@ label {
 input {
   padding: 1vmin;
   font-size: 2vmin;
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 0.5vmin;
+  border: .1vmin solid var(--col-2);
+  border-radius: .5vmin;
   color: var(--text-dark);
-  background-image: none !important;
+  background-image: none !important; /* prevent lastpass */
   outline: none;
-  transition: border-color 0.3s ease;
 }
 
 input:focus {
-  border-color: var(--orange);
+  border-color: var(--teal);
 }
 
-button,
-a.button {
+button, a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: var(--teal);
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: 0.1vmin solid var(--tan-2);
-  border-radius: 0.5vmin;
+  border: .1vmin solid var(--col-2);
+  border-radius: .5vmin;
   outline: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 button.btn-sm {
   font-size: 1.5vmin;
-  padding: 0.6vmin 0.8vmin;
+  padding: .6vmin .8vmin;
 }
 
-button.btn-sm {
+button.btn-xs {
   font-size: 1vmin;
-  padding: 0.4vmin 0.5vmin;
+  padding: .4vmin .5vmin;
 }
 
-button:disabled,
-form:invalid button[type="submit"] {
+button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: var(--col-4);
 }
 
 button[type="submit"] {
   grid-column: span 2;
-  margin-top: 1vmin;
+  margin: 1vmin 0 0;
 }

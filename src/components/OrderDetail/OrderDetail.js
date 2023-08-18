@@ -20,7 +20,7 @@ export default function OrderDetail({ order, handleChangeQty, handleCheckout }) 
           {order.isPaid ?
             <span>ORDER <span className="smaller">{order.orderId}</span></span>
             :
-            <span>NEW ORDER</span>
+            <span>NEW ORDER </span>
           }
           <span>{new Date(order.updatedAt).toLocaleDateString()}</span>
         </div>
@@ -43,7 +43,7 @@ export default function OrderDetail({ order, handleChangeQty, handleCheckout }) 
               </section>
             </>
             :
-            <div className={styles.hungry}>Hungry?</div>
+            <div className={styles.hungry}>Feeling Creative?</div>
           }
         </div>
       </div>

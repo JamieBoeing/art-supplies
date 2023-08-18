@@ -52,7 +52,7 @@ orderSchema.statics.getCart = function(userId) {
  orderSchema.methods.addItemToCart = async function(itemId) {
     const cart = this;
     // Check if item is already in cart
-    const lineItem = cart.lineItems.find(lineItem => lineItem.item_id.equals(itemId))
+    const lineItem = cart.lineItems.find(lineItem => lineItem.item._id.equals(itemId))
     if (lineItem) {
         lineItem.qty += 1;
     } else {
@@ -63,11 +63,11 @@ orderSchema.statics.getCart = function(userId) {
  };
 
  // Instance method to set an items' qty in the cart (will add itme if doesnt exsist)
- orderSchema.methods.setItemQty = function(item_id, newQty) {
+ orderSchema.methods.setItemQty = function(itemId, newQty) {
     // this keyword is bound to the cart (order doc)
     const cart = this;
     // Find the line item in the cart for the new item
-    const lineItem = cart.lineItems.find(lineItem => lineItem.item_id.equals(itemId))
+    const lineItem = cart.lineItems.find(lineItem => lineItem.item._id.equals(itemId))
     if (lineItem && newQty <= 0) {
         // Calling remove, removes itself from teh cart.lineItems.
         lineItem.deleteOne();

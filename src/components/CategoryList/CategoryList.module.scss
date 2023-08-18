@@ -1,25 +1,26 @@
 .CategoryList {
-    color: var(--text-light);
-    list-style: none;
+    color: var(--col-3);
+    list-style: circle;
     padding: 0;
-    font-size: 1.7vw;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vw;
     }
     
     .CategoryList li {
     padding: .6vmin;
-    text-align: center;
+    text-align: left;
     border-radius: .5vmin;
     margin-bottom: .5vmin;
     }
     
     .CategoryList li:hover:not(.active) {
     cursor: pointer;
-    background-color: var(--orange);
+    background-color: var(--teal);
     color: var(--white);
     }
     
     .CategoryList li.active {
     color: var(--text-dark);
-    background-color: var(--tan-1);
-    border: .1vmin solid var(--tan-3);
+    background-color: var(--col-1);
+    border: .1vmin solid var(--col-3);
     }

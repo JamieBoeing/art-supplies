@@ -7,7 +7,7 @@
     padding: 2vmin;
     color: var(--text-light);
     background-color: var(--white);
-    border: .2vmin solid var(--tan-3);
+    border: .2vmin solid var(--col-5);
     border-radius: 1vmin;
     font-size: 2vmin;
     cursor: pointer;
@@ -18,12 +18,12 @@
     }
     
     .OrderListItem.selected {
-    border-color: var(--orange);
+    border-color: var(--teal);
     border-width: .2vmin;
     cursor: default;
     }
     
     .OrderListItem:not(.selected):hover {
-    border-color: var(--orange);
+    border-color: var(--col-2);
     border-width: .2vmin;
     }

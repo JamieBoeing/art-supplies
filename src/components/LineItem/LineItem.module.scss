@@ -5,12 +5,12 @@
     padding: 1vmin 0;
     color: var(--text-light);
     background-color: var(--white);
-    border-top: .1vmin solid var(--tan-3);
+    border-top: .1vmin solid var(--col-3);
     font-size: 1.5vw;
     }
     
     .LineItem:last-child {
-    border-bottom: .1vmin solid var(--tan-3);
+    border-bottom: .1vmin solid var(--col-3);
     }
     
     .LineItem .qty {
