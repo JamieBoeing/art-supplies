@@ -5,8 +5,12 @@
     grid-template-rows: 1fr;
     background-color: var(--col-4);
     border-radius: 2vmin;
+    background-image: url('https://i.imgur.com/PLjQbV9.jpeg'); 
+    background-color: rgba(255, 255, 255, 0.7); 
+    background-blend-mode: overlay;
+    background-size: cover;
   }
-  
+
   .NewOrderPage aside {
     display: flex;
     flex-direction: column;
@@ -14,3 +18,5 @@
     align-items: center;
     margin: 3vmin 2vmin;
   }
+
+  

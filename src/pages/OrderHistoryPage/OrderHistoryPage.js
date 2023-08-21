@@ -1,5 +1,5 @@
 import styles from './OrderHistoryPage.module.scss';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as ordersAPI from '../../utilities/order-api';
 import Logo from '../../components/Logo/Logo';

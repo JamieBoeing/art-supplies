@@ -6,7 +6,12 @@
   grid-template-rows: 1fr;
   background-color: var(--white);
   border-radius: 2vmin;
+  background-image: url('https://i.imgur.com/PLjQbV9.jpeg'); 
+  background-color: rgba(255, 255, 255, 0.7); 
+  background-blend-mode: overlay;
+  background-size: cover;
 }
+
 
 .OrderHistoryPage .aside {
   display: flex;
@@ -14,4 +19,5 @@
   justify-content: space-between;
   align-items: center;
   margin: 3vmin 2vmin;
+  border-radius: 2vmin;
 }

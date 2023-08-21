@@ -1,29 +1,65 @@
+/* AuthPage.module.scss */
+@import url('https://i.imgur.com/PLjQbV9.jpeg');
+
 .AuthPage {
-    margin: 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--white);
-    border-radius: 2vmin;
-  }
-  
-  .AuthPage h3 {
-    margin-top: 4vmin;
-    text-align: center;
-    color: var(--text-light);
-    cursor: pointer;
-  }
+  margin: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  background-image: url('https://i.imgur.com/PLjQbV9.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 2vmin;
+  border: 5px solid var(--col-7);
+}
 
-  .ImageContainer {
-    width: 100%;
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: 4vmin;
-  }
 
-  .BrushImage {
-    width: 20%;
-    height: auto;
-  }
+.AuthTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+ 
+}
+
+.AuthBottom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align images to center vertically */
+  padding: 20px;
+  margin-top: auto;
+}
+
+.AuthBottomSpacer {
+  flex: 1; /* Fill available space, pushing images to the bottom */
+}
+.AuthPage h3 {
+  margin-top: 4vmin;
+  text-align: center;
+  color: var(--white);
+  cursor: pointer;
+}
+.AuthPage h3.BoldWhiteText {
+  font-weight: bold;
+  font-size: large;
+  color: white;
+}
+
+.ImageContainer {
+  margin: 0 10px; /* Adjust margin between images */
+}
+
+.ImageContainer img {
+  width: 200px; /* Adjust the image width */
+  height: auto; /* Maintain aspect ratio */
+  margin: 20px 0 0 5px; /* Adjust spacing between images */
+  border: 2px solid var(--col-4);
+  border-radius: 2vm;
+}
+
+.AuthPageLogo {
+  margin-bottom: 20px;
+}
+

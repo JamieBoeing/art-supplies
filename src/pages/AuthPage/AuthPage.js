@@ -10,18 +10,33 @@ export default function AuthPage({ setUser }) {
 
     return (
         <main className={styles.AuthPage}>
-            <div>
+            <div className={styles.AuthTop}>
+            <div className={styles.AuthPageLogo}>
                 <Logo />
-                <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3>
-            </div>
+                </div>
+                <h3 className={styles.BoldWhiteText} onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3>
             {showLogin ? <LoginForm setUser={setUser} />: <SignUpForm setUser={setUser} />}
-            <div className={styles.ImageContainer}>
-                <img
-                    src ="https://i.imgur.com/SvipfsU.jpeg"
-                    alt="jars"
-                    className={styles.BrushImage}
-                />
             </div>
+            {/* <div className={styles.AuthBottom}>
+                <div className={styles.ImageContainer}>
+                    <img
+                        src ="https://i.imgur.com/SvipfsU.jpeg"
+                        alt="jars-1"
+                    />
+                </div>
+                <div className={styles.ImageContainer}>
+                    <img
+                        src ="https://i.imgur.com/fkpeQk1.jpeg"
+                        alt="jars-2"
+                    />
+                </div>
+                <div className={styles.ImageContainer}>
+                    <img
+                        src ="https://i.imgur.com/DHQ6dMb.jpeg"
+                        alt="jars-3"
+                    />
+                </div>
+            </div> */}
         </main>
     );
 }
