@@ -2,7 +2,8 @@
     margin: 20px;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--white);
     border-radius: 2vmin;
@@ -13,4 +14,16 @@
     text-align: center;
     color: var(--text-light);
     cursor: pointer;
+  }
+
+  .ImageContainer {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 4vmin;
+  }
+
+  .BrushImage {
+    width: 20%;
+    height: auto;
   }

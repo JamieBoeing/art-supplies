@@ -23,7 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--col-4);
-  padding: 2vmin;
+  padding: 4vmin;
   height: 100vh;
 }
 
@@ -85,6 +85,7 @@ code {
   background-color: var(--col-7);
   border: .3vmin solid var(--col-4);
   border-radius: 1vmin;
+  color: var(--col-4);
 }
 
 p.error-message {
@@ -96,7 +97,7 @@ form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
-  color: var(--col-7);
+  color: var(--col-4);
 }
 
 label {

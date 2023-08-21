@@ -43,7 +43,14 @@ module.exports = env => {
 						'sass-loader',
 						'postcss-loader'
 					]
-				}
+				},
+				// {
+				// 	test: /\.(jpe?g|png|gif|svg)$/i, 
+				// 	loader: 'file-loader',
+				// 	options: {
+				// 	  name: '/public/images/[name].[ext]'
+				// 	}
+				// }
 			]
 		},
 		resolve: {

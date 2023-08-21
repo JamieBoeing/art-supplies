@@ -4,6 +4,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import Logo from '../../components/Logo/Logo';
 
+
 export default function AuthPage({ setUser }) {
     const [showLogin, setShowLogin] = useState(true);
 
@@ -14,8 +15,12 @@ export default function AuthPage({ setUser }) {
                 <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3>
             </div>
             {showLogin ? <LoginForm setUser={setUser} />: <SignUpForm setUser={setUser} />}
-            <div>
-       
+            <div className={styles.ImageContainer}>
+                <img
+                    src ="https://i.imgur.com/SvipfsU.jpeg"
+                    alt="jars"
+                    className={styles.BrushImage}
+                />
             </div>
         </main>
     );
