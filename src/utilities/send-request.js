@@ -1,4 +1,5 @@
-import { getToken } from './users-service';
+import { getToken } from "./token";
+
 export default async function sendRequest(url, method = 'GET', payload = null) {
   // Fetch takes an optional options object as the 2nd argument
   // used to include a data payload, set headers, etc.
@@ -8,7 +9,7 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
     options.body = JSON.stringify(payload);
   }
   const token = getToken();
-  if (token) {
+  if (!token) {
     // Ensure headers object exists
     options.headers = options.headers || {};
     // Add token to an Authorization header

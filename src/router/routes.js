@@ -1,5 +1,5 @@
-import NewOrderPage from "../NewOrderPage/NewOrderPage";
-import OrderHistoryPage from "../../components/OrderDetail/OrderDetail";
+import NewOrderPage from "../pages/NewOrderPage/NewOrderPage";
+import OrderHistoryPage from "../components/OrderDetail/OrderDetail";
 
 const routes = [
     {

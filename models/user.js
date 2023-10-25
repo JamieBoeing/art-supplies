@@ -1,4 +1,4 @@
-
+require('dotenv').config
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
@@ -19,7 +19,8 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3,
         required: true
-    }
+    },
+    isLoggedIn: { type: Boolean }
 }, {
     timestamps: true,
     toJSON: {
@@ -37,5 +38,6 @@ userSchema.pre('save', async function(next) {
     this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
     return next();
 })
+
 
 module.exports = mongoose.model('User', userSchema);

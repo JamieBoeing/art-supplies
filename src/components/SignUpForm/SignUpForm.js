@@ -1,5 +1,5 @@
 import { Component } from "react"
-import { signUp } from '../../utilities/users-service'
+import {create, logIn, logOut, update, getUser, getAllUsers, deletes, getToken} from '../../utilities/users-service'
 
 export default class SignUpForm extends Component {
 state = {
@@ -26,7 +26,7 @@ handleSubmit = async (evt) => {
     // The promise returned by the signUp service method
     // will resolve to the user object included in the
     // payload of the JSON Web Token (JWT)
-    const user = await signUp(formData);
+    const user = await create(formData);
     // Baby step
     console.log(user)
     this.props.setUser(user);

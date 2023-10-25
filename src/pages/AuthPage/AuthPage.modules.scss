@@ -35,17 +35,7 @@
 .AuthBottomSpacer {
   flex: 1; /* Fill available space, pushing images to the bottom */
 }
-.AuthPage h3 {
-  margin-top: 4vmin;
-  text-align: center;
-  color: var(--white);
-  cursor: pointer;
-}
-.AuthPage h3.BoldWhiteText {
-  font-weight: bold;
-  font-size: large;
-  color: white;
-}
+
 
 .ImageContainer {
   margin: 0 10px; /* Adjust margin between images */
