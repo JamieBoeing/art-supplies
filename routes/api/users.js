@@ -1,25 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const  { checkToken, dataController, apiController} = require('../../controllers/api/users')
+const{ userController } = require('../../controllers/api/users')
 const ensureLoggedIn = require('../../config/ensureLoggedIn')
+const checkToken = require('../../config/checkToken')
 
 // POST api/users
-router.post('/', dataController.createUser, apiController.auth)
-
+router.post('/', userController.createUser)
 // POST api/ users/ loginUser
-router.post('/login', dataController.logInUser, apiController.auth)
+router.post('/login', userController.logInUser)
 // POST logOutUser
-router.post('/logout', dataController.logOutUser)
+router.post('/logout', userController.logOutUser)
 // PUT updateUser
-router.put('/:id',dataController.updateUser, apiController.auth)
+router.put('/:id', userController.updateUser)
 // DELETE deleteUser
-router.delete('/:id', dataController.deleteUser )
+router.delete('/:id', userController.deleteUser)
 // GET showUser
-router.get('/:id', dataController.showUser)
+router.get('/:id', userController.showUser)
 // GET showAllUsers
-router.get('/:id', dataController.showAllUsers)
-
-// GET api/users/check-token
+router.get('/:id', userController.showAllUsers)
+// GET -> /api/users/check-token - Verify User Authentication
 router.get('/check-token', ensureLoggedIn, checkToken)
+
 
 module.exports = router 

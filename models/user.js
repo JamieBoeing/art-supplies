@@ -19,8 +19,7 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3,
         required: true
-    },
-    isLoggedIn: { type: Boolean }
+    }
 }, {
     timestamps: true,
     toJSON: {
@@ -33,11 +32,15 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function(next) {
     // 'this' is the use document
-    if (!this.isModified('password')) return next();
-    // update the password with teh computed hash
-    this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
-    return next();
+    if (!this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 8)
+}
+     next();
 })
+userSchema.methods.generateAuthToken = async function() {
+    const token = jwt.sign({ _id: this._id }, SECRET)
+    return token
+}
 
-
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
+module.exports = User
