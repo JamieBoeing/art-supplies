@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
-const{ userController } = require('../../controllers/api/users')
+const{ userController, apiController, checkToken } = require('../../controllers/api/users')
 const ensureLoggedIn = require('../../config/ensureLoggedIn')
-const checkToken = require('../../config/checkToken')
+
 
 // POST api/users
-router.post('/', userController.createUser)
+router.post('/', userController.createUser, apiController.auth)
 // POST api/ users/ loginUser
-router.post('/login', userController.logInUser)
+router.post('/login', userController.logInUser, apiController.auth)
 // POST logOutUser
-router.post('/logout', userController.logOutUser)
+// router.post('/logout', userController.logOutUser)
 // PUT updateUser
-router.put('/:id', userController.updateUser)
+router.put('/:id', userController.updateUser, apiController.auth)
 // DELETE deleteUser
 router.delete('/:id', userController.deleteUser)
 // GET showUser

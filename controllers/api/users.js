@@ -3,56 +3,39 @@ const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-/* -- Helper Function to create a JWT yokrn -- */
-
-function createJWT (user) {
-    return jwt.sign(
-        // data payload
-        { user },
-        process.env.SECRET,
-        { expiresIn: '72h' }
-    )
+// Middleware function to check users token
+const checkToken = (req, res) => {
+    console.log('req.user', req.user)
+    res.json(req.exp)
 }
+
+
+
+
 
 // controllers for handling user data
 const userController = {
-    async auth(req, res, next) {
-    try {
-        const token = req.header('Authorization').replace('Bearer ', '')
-        const data = jwt.verify(token, process.env.SECRET)
-        const user = await User.findOne({ _id: data._id })
-
-        if (!user) {
-            throw new Error()
-        }
-        req.user = user
-        next()
-    } catch(error) {
-        res.status(401).send('Not Authorized')
-    }
-},
-
+    // POST Creae user
     async createUser(req, res, next) {
-    try {
-        // create a new user in the database
-        const user = await new User(req.body)
+    try { 
+        // Create a new user in the database
+        const user = await User.create(req.body)
 
-        // save user to the database
-        await user.save()
-
-        // generate jwt token for the user
+        // Generate a JWT token 
         const token = createJWT(user)
-
-        // prepare the response data with user and token 
+       
+        // Prepare response data with user and token
         res.locals.data.user = user
         res.locals.data.token = token
-
+        
+        // Call next
         next()
     } catch(error) {
-        res.status(400).json({ message: error.message})
+        console.log('you got a database problem')
+        res.status(400).json({message: error.message})
     }
 },
-
+// POST Log in user
 async logInUser(req, res) {
     try {
         const user = await User.findOne({ email: req.body.email })
@@ -65,20 +48,10 @@ async logInUser(req, res) {
         res.locals.data.token = createJWT(user)
         next()
         } catch (error) {
-            res.status(400).json({ message: 'Hello, Welcome!' })
+            res.status(400).json({ message: 'WRONG USER BUDDY' })
         } 
 },
-
- async logOutUser(req, res) {
-    try {
-        req.user.isLoggedIn = false 
-        await req.user.save()
-        res.json ({  message: 'Logout Successful' })
-    } catch(error) {
-        res.status(400).json({ message: error.message})
-    }
-},
-
+// PUT Udate user
 async updateUser(req, res) { 
     try {
         const user = await User.findOneAndUpdate({ _id: req.params.id })
@@ -118,10 +91,27 @@ async showUser(req, res) {
     } catch(error) {
         res.status(400).json({ message: error.message})
     }
-},
-
+}
+}
+const apiController = {
+    auth(req, res) {
+        res.json(res.locals.data.token)
+    }
 }
 
+
 module.exports = {
-    userController
+    userController,
+    apiController, 
+    checkToken
+}
+
+// Helper functions
+ 
+function createJWT(user) {
+    return jwt.sign(
+        {user},
+        process.env.SECRET,
+        { expiresIn: '72h'}
+    )
 }
